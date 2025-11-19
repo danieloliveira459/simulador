@@ -1,4 +1,4 @@
- Simulador FNO – React
+ Simulador– React
 
 Este projeto é um simulador interativo do FNO, desenvolvido em React, com foco em usabilidade, simplicidade e geração de relatórios.
 A aplicação é composta por três telas principais — Dados Básicos, Seu Projeto e Resultado — todas integradas por uma barra lateral de progresso, facilitando a navegação.
