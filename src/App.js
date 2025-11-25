@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import ProgressBar from './components/ProgressBar';
-import BasicForm from './components/BasicForm';
-import ProjectForm from './components/ProjectForm';
-import ResultScreen from './components/ResultScreen';
+
+import React, { useState, useRef } from "react";
+import DadosBasicos from "./components/DadosBasicos";
+import SeuProjeto from "./components/SeuProjeto";
+import Resultado from "./components/Resultado"
+import ProgressBar  from "./components/ProgressBar";
 
 
 export default function App() {
@@ -11,7 +12,7 @@ export default function App() {
 
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: type === 'checkbox' ? checked : value }));
+    setFormData((prev) => ({ ...prev, [id]: type === "checkbox" ? checked : value }));
   };
 
   const nextStep = () => setStep((p) => Math.min(p + 1, 3));
@@ -25,10 +26,9 @@ export default function App() {
   const primeiraParcela = prazoMeses > 0 ? totalPago / prazoMeses : 0;
 
   const baixarPDF = () => {
-    const element = document.getElementById('resultScreen');
+    const element = document.getElementById("resultScreen");
     if (!element) return;
-    // html2pdf is loaded via CDN and available as window.html2pdf
-    const opt = { margin: 0.5, filename: 'simulacao_fno.pdf', html2canvas: { scale: 2 } };
+    const opt = { margin: 0.5, filename: "simulacao_fno.pdf", html2canvas: { scale: 2 } };
     window.html2pdf().from(element).set(opt).save();
   };
 
@@ -38,19 +38,25 @@ export default function App() {
         <ProgressBar step={step} setStep={setStep} />
         <div className="w-3/4 p-8 relative">
           {step === 1 && (
-            <BasicForm formData={formData} handleChange={handleChange} nextStep={nextStep} />
+            <DadosBasicos
+              formData={formData}
+              handleChange={handleChange}
+              nextStep={nextStep}
+            />
           )}
+
           {step === 2 && (
-            <ProjectForm
+            <SeuProjeto
               formData={formData}
               handleChange={handleChange}
               nextStep={nextStep}
               prevStep={prevStep}
             />
           )}
+
           {step === 3 && (
             <div id="resultScreen">
-              <ResultScreen
+              <Resultado
                 valorFinanciado={valorFinanciado}
                 totalPago={totalPago}
                 primeiraParcela={primeiraParcela}
@@ -71,4 +77,3 @@ export default function App() {
     </div>
   );
 }
-

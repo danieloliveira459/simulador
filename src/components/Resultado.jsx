@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ResultScreen({ valorFinanciado, totalPago, primeiraParcela, totalJuros }) {
+export default function Resultado({ valorFinanciado, totalPago, primeiraParcela, totalJuros }) {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-6">Resultado</h2>

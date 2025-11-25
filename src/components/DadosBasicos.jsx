@@ -1,7 +1,7 @@
 import React from 'react';
 import InputMask from "react-input-mask";
 
-export default function BasicForm({ formData, handleChange, nextStep }) {
+export default function DadosBasicosForm({ formData, handleChange, nextStep }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aqui você pode adicionar validações extras se quiser

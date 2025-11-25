@@ -34,4 +34,3 @@ export default function ProgressBar({ step, setStep }) {
     </div>
   );
 }
-
